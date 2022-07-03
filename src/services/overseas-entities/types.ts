@@ -9,6 +9,8 @@ export interface OverseasEntity {
     beneficial_owners_individual?: BeneficialOwnerIndividual[];
     beneficial_owners_corporate?: BeneficialOwnerCorporate[];
     beneficial_owners_government_or_public_authority?: BeneficialOwnerGovernmentOrPublicAuthority[];
+    managing_officers_individual?: ManagingOfficerIndividual[];
+    managing_officers_corporate?: ManagingOfficerCorporate[];
 }
 
 export interface OverseasEntityResource {
@@ -18,6 +20,8 @@ export interface OverseasEntityResource {
     beneficial_owners_individual?: BeneficialOwnerIndividualResource[];
     beneficial_owners_corporate?: BeneficialOwnerCorporateResource[];
     beneficial_owners_government_or_public_authority?: BeneficialOwnerGovernmentOrPublicAuthorityResource[];
+    managing_officers_individual?: ManagingOfficerIndividualResource[];
+    managing_officers_corporate?: ManagingOfficerCorporateResource[];
 }
 export interface OverseasEntityCreated {
     id: string
@@ -28,10 +32,7 @@ export interface OverseasEntityCreated {
  */
 export interface Presenter {
     full_name?: string
-    phone_number?: string
-    role?: presenterRole
-    role_title?: string
-    anti_money_laundering_registration_number?: string
+    email?: string
 }
 
 export interface Entity {
@@ -45,6 +46,7 @@ export interface Entity {
     law_governed?: string
     public_register_name?: string
     registration_number?: string
+    is_on_register_in_country_formed_in?: yesNoResponse;
 }
 
 export interface BeneficialOwnerIndividual {
@@ -85,7 +87,7 @@ export interface BeneficialOwnerCorporate {
     legal_form?: string
     law_governed?: string
     is_on_register_in_country_formed_in?: yesNoResponse
-    register_name?: string
+    public_register_name?: string
     registration_number?: string
     start_date?: InputDate
     beneficial_owner_nature_of_control_types?: NatureOfControlType[]
@@ -102,7 +104,7 @@ export interface BeneficialOwnerCorporateResource {
     legal_form?: string
     law_governed?: string
     is_on_register_in_country_formed_in?: yesNoResponse
-    register_name?: string
+    public_register_name?: string
     registration_number?: string
     start_date?: string
     beneficial_owner_nature_of_control_types?: NatureOfControlType[]
@@ -134,6 +136,62 @@ export interface BeneficialOwnerGovernmentOrPublicAuthorityResource {
     non_legal_firm_members_nature_of_control_types?: NatureOfControlType[];
 }
 
+export interface ManagingOfficerIndividual {
+    first_name?: string
+    last_name?: string
+    has_former_names?: yesNoResponse
+    former_names?: string
+    date_of_birth?: InputDate
+    nationality?: string
+    usual_residential_address?: Address
+    service_address?: Address
+    is_service_address_same_as_usual_residential_address?: yesNoResponse
+    occupation?: string
+    role_and_responsibilities?: string
+}
+
+export interface ManagingOfficerIndividualResource {
+    first_name?: string
+    last_name?: string
+    has_former_names?: yesNoResponse
+    former_names?: string
+    date_of_birth?: string
+    nationality?: string
+    usual_residential_address?: Address
+    service_address?: Address
+    is_service_address_same_as_usual_residential_address?: yesNoResponse
+    occupation?: string
+    role_and_responsibilities?: string
+}
+
+export interface ManagingOfficerCorporate {
+    name?: string
+    principal_address?: Address
+    service_address?: Address
+    is_service_address_same_as_principal_address?: yesNoResponse
+    legal_form?: string
+    law_governed?: string
+    is_on_register_in_country_formed_in?: yesNoResponse
+    public_register_name?: string
+    registration_number?: string
+    start_date?: InputDate
+    role_and_responsibilities?: string
+}
+
+export interface ManagingOfficerCorporateResource {
+    name?: string
+    principal_address?: Address
+    service_address?: Address
+    is_service_address_same_as_principal_address?: yesNoResponse
+    legal_form?: string
+    law_governed?: string
+    is_on_register_in_country_formed_in?: yesNoResponse
+    public_register_name?: string
+    registration_number?: string
+    start_date?: string
+    role_and_responsibilities?: string
+}
+
 /**
  * Shared Data Type
  */
@@ -156,14 +214,6 @@ export interface InputDate {
     day: string;
     month: string;
     year: string;
-  }
-
-enum presenterRole {
-    administrator = "administrator",
-    agent = "agent",
-    solicitor = "solicitor",
-    beneficial_owner = "beneficial_owner",
-    other = "other"
 }
 
 export enum BeneficialOwnersStatementType {

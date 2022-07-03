@@ -67,7 +67,8 @@ export interface CertificateItemOptions {
     certificateType: string;
     companyType: string;
     deliveryTimescale: string;
-    designatedMemberDetails: {
+    includeEmailCopy?: boolean;
+    designatedMemberDetails?: {
         includeAddress?: boolean;
         includeAppointmentDate?: boolean;
         includeBasicInformation?: boolean;
@@ -75,29 +76,29 @@ export interface CertificateItemOptions {
         includeDobType?: string;
     };
     deliveryMethod: string;
-    generalPartnerDetails: {
+    generalPartnerDetails?: {
         includeBasicInformation?: boolean;
     };
     includeGeneralNatureOfBusinessInformation?: boolean;
     includeGoodStandingInformation?: boolean;
     includeCompanyObjectsInformation?: boolean;
-    limitedPartnerDetails: {
+    limitedPartnerDetails?: {
         includeBasicInformation?: boolean;
     };
-    memberDetails: {
+    memberDetails?: {
         includeAddress?: boolean;
         includeAppointmentDate?: boolean;
         includeBasicInformation?: boolean;
         includeCountryOfResidence?: boolean;
         includeDobType?: string;
     };
-    principalPlaceOfBusinessDetails: {
+    principalPlaceOfBusinessDetails?: {
         includeAddressRecordsType?: string;
     };
-    registeredOfficeAddressDetails: {
+    registeredOfficeAddressDetails?: {
         includeAddressRecordsType?: string;
     };
-    secretaryDetails: {
+    secretaryDetails?: {
         includeBasicInformation?: boolean;
         includeAddress?: boolean;
         includeAppointmentDate?: boolean;
@@ -106,7 +107,7 @@ export interface CertificateItemOptions {
         includeOccupation?: boolean;
         includeDobType?: string;
     };
-    directorDetails: {
+    directorDetails?: {
         includeBasicInformation?: boolean;
         includeAddress?: boolean;
         includeAppointmentDate?: boolean;
@@ -117,11 +118,11 @@ export interface CertificateItemOptions {
     };
     forename: string;
     surname: string;
-    liquidatorsDetails: {
+    liquidatorsDetails?: {
         includeBasicInformation?: boolean;
     };
     companyStatus: string
-    administratorsDetails: {
+    administratorsDetails?: {
         includeBasicInformation?: boolean;
     };
 }
@@ -220,6 +221,7 @@ export interface CertificateItemOptionsResource {
     certificate_type: string;
     company_type: string;
     delivery_timescale: string;
+    include_email_copy?: boolean;
     delivery_method: string;
     designated_member_details: {
         include_address?: boolean;
