@@ -1,6 +1,4 @@
-/**
- * CertificateItemResource is what is returned from the api.
- */
+import { ItemOptionsDeliveryTimescaleConfigurable } from "../types";
 
 export interface CertificateItemResource {
     company_name: string;
@@ -19,6 +17,7 @@ export interface CertificateItemResource {
     postal_delivery: boolean;
     quantity: number;
     total_item_cost: string;
+    user_id: string;
   }
 
 export interface ItemCostsResource {
@@ -133,6 +132,7 @@ export interface CertificateItem {
     postalDelivery: boolean;
     quantity: number;
     totalItemCost: string;
+    userId: string;
 }
 
 export interface ItemCosts {
@@ -142,13 +142,12 @@ export interface ItemCosts {
     productType: string;
 }
 
-export interface ItemOptions {
+export interface ItemOptions extends ItemOptionsDeliveryTimescaleConfigurable {
     certificateType: string;
     collectionLocation: string;
     companyType: string;
     contactNumber: string;
     deliveryMethod: string;
-    deliveryTimescale: string;
     designatedMemberDetails?: DesignatedMemberDetails;
     directorDetails?: DirectorOrSecretaryDetails;
     forename: string;
@@ -323,7 +322,6 @@ export interface LiquidatorsDetailsRequest extends BasicInformationRequest {
 export interface AdministratorsDetailsRequest extends BasicInformationRequest {
 }
 
-// CertificateItemRequestResource
 export interface CertificateItemRequestResource {
   company_number?: string;
   customer_reference?: string;
